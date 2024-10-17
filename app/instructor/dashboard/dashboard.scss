@@ -1,0 +1,114 @@
+* {
+  font-family: sans-serif;
+}
+
+// Container for the whole dashboard
+.dashboard-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 25rem;
+  width: 80%;
+  border-radius: 1rem;
+  //   width: min(800px, 80%);
+  background-color: white;
+  padding: 0 2rem;
+  background-image: url(../../../assets/krishnaBackground2.jpeg);
+  background-size: cover;
+  background-position: top right;
+  overflow: hidden !important;
+}
+
+// Content wrapper
+.dashboard-content {
+  width: 60%;
+  height: 90%;
+  padding: 0 1rem;
+  //   max-width: 56rem; // Tailwind's max-w-4xl
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.45);
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
+
+  backdrop-filter: blur(15px);
+
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+// Title
+.title-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  height: auto;
+}
+
+.dashboard-title {
+  font-size: 1.875rem; // Tailwind's text-3xl
+  font-weight: 700; // Tailwind's font-bold
+  color: black; // Tailwind's text-gray-900
+  margin-bottom: 2rem; // Tailwind's mb-8
+}
+
+.button-container {
+  flex: 1;
+  display: flex;
+  justify-content: space-around;
+  padding: 0 5rem;
+  align-items: center;
+  // flex-direction: column;
+
+  .button-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    .button {
+      width: 8rem;
+      position: relative;
+      overflow: hidden;
+      height: 3rem;
+      padding: 0 2rem;
+      border-radius: 1.5rem;
+      background: #3d3a4e;
+      background-size: 400%;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    .button:hover::before {
+      transform: scaleX(1);
+    }
+
+    .button-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .button::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: scaleX(0);
+      transform-origin: 0 50%;
+      width: 100%;
+      height: inherit;
+      border-radius: inherit;
+      background: linear-gradient(
+        82.3deg,
+        rgba(150, 93, 233, 1) 10.8%,
+        rgba(99, 88, 238, 1) 94.3%
+      );
+      transition: all 0.475s;
+    }
+  }
+}
