@@ -60,7 +60,7 @@
 
           .sidebar-item-label {
             margin-left: 0.5rem; /* ml-2 */
-            font-size: 0.875rem; /* text-sm */
+            font-size: 1rem; /* text-sm */
             font-weight: 700; /* font-bold */
           }
 
@@ -86,7 +86,7 @@
               background-color: #e5e7eb; /* hover:bg-gray-300 */
             }
 
-            &.sidebar-item-active {
+            &.active-item {
               background-color: #e5e7eb; /* bg-gray-300 */
             }
           }

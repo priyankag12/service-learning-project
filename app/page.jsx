@@ -1,17 +1,22 @@
-import { useState } from "react";
-import "./baseLayout.scss"; // Import the Sass file without modules
+// app/page.js (Home page)
+"use client";
 
-const Section = ({ title, children, childId }) => {
-  const [activeChild, setActiveChild] = useState("");
+import React from "react";
+import "./globalsass.scss";
+import { useRouter } from "next/navigation";
+
+const page = () => {
+  const router = useRouter();
 
   return (
-    <section className="section">
-      <div className="layout-container">
-        <div className="left-navbar">
-          <div class="sidebar">
-            {/* The app */}
-            <a class="sidebar-item" id="the-app" href="/">
+    <>
+      <div className="body-container">
+        <div className="card-container">
+          <div className="top">
+            <div className="heading">
+              <h1>Welcome to VedicConnect</h1>
               <svg
+              className="logo"
                 width="343"
                 height="381"
                 viewBox="0 0 343 381"
@@ -20,31 +25,42 @@ const Section = ({ title, children, childId }) => {
               >
                 <path
                   d="M227 95.5407C227 126.193 202.152 151.041 171.5 151.041C140.848 151.041 116 126.193 116 95.5407C116 64.8889 140.848 40.0407 171.5 40.0407C202.152 40.0407 227 64.8889 227 95.5407ZM143.52 95.5407C143.52 110.994 156.047 123.521 171.5 123.521C186.953 123.521 199.48 110.994 199.48 95.5407C199.48 80.0878 186.953 67.5607 171.5 67.5607C156.047 67.5607 143.52 80.0878 143.52 95.5407Z"
-                  fill="black"
+                  fill="white"
                 />
                 <path
                   d="M232 0.54071C255 13.0407 272.5 32.5407 284 59.5407C296.244 86.2481 298.092 116.008 292.183 145.072C286.274 174.135 271.355 200.213 249.845 219.081C228.334 237.948 201.493 248.498 173.671 249.02C145.849 249.543 118.677 240.008 96.559 221.961C74.4413 203.913 58.6741 178.411 51.813 149.588C44.9519 120.764 45.1413 90.1915 56.5 63.0407C67.8587 35.8899 91.5 2.5407 114.394 0L117.5 1.5407L120.5 4.0407L122.5 6.5407L124 9.0407L125 12.0407V15.5407L124.5 19.0407L123.5 22.0407C109 35.5407 90.827 52.5611 81.7887 74.1655C72.7504 95.77 70.8032 120.004 76.2627 142.939C81.7222 165.874 94.2685 186.167 111.868 200.528C129.467 214.888 151.089 222.476 173.227 222.06C195.366 221.644 216.724 213.249 233.841 198.236C250.957 183.223 262.828 162.472 267.53 139.345C272.232 116.219 268.743 92.7923 259 71.5407C248.754 50.7594 235 35.5407 217.5 22.5407L216 19.0407V14.0407L217 10.0407L219 7.04071L222 4.04071L225 2.04071L228 1.04071L232 0.54071Z"
-                  fill="black"
+                  fill="white"
                 />
                 <path
                   d="M126 293.541C129 272.541 96.4433 266.112 85 261.041C73.5567 255.97 59.2486 256.027 47 258.541C34.7514 261.055 25.0071 268.059 16.4408 277.237C7.87454 286.415 2.33817 298.043 0.592766 310.523C-1.15264 323.003 0.97862 335.721 6.69356 346.93C12.4085 358.139 21.4265 367.288 32.508 373.119C43.5894 378.95 56.6121 382.224 69 380.541C81 378.541 93.5 373.541 104.5 366.541L87.5 344.041C81.5 347.541 71.5651 350.816 64.8675 351.725C58.1699 352.635 51.3572 351.431 45.366 348.278C39.3748 345.126 34.4991 340.179 31.4093 334.119C28.3195 328.059 27.1672 321.183 28.1109 314.436C29.0546 307.688 32.0478 301.402 36.6792 296.439C41.3106 291.477 47.3527 288.083 53.975 286.724C60.5973 285.364 67.4746 286.107 73.6615 288.848C79.8483 291.59 99.5 298.541 105.5 303.041L108.5 303.541H112L115 303.041L117.5 302.041L120.5 300.041L122.5 298.041L126 293.541Z"
-                  fill="black"
+                  fill="white"
                 />
                 <path
                   d="M216.5 344.041C213.5 365.041 245.751 370.911 257.194 375.982C268.638 381.053 282.946 380.996 295.194 378.482C307.443 375.968 317.187 368.964 325.754 359.786C334.32 350.607 339.856 338.979 341.602 326.499C343.347 314.02 341.216 301.301 335.501 290.092C329.786 278.884 320.768 269.735 309.686 263.904C298.605 258.072 285.582 254.799 273.194 256.482C261.194 258.482 249.5 263.541 238 269.541L255.5 293.041C261.5 289.541 270.629 286.207 277.327 285.297C284.024 284.387 290.837 285.591 296.828 288.744C302.82 291.897 307.695 296.843 310.785 302.903C313.875 308.963 315.027 315.84 314.083 322.587C313.14 329.334 310.147 335.621 305.515 340.583C300.884 345.545 294.842 348.94 288.219 350.299C281.597 351.658 274.72 350.916 268.533 348.174C262.346 345.432 242.694 338.482 236.694 333.982L233.694 333.482H230.194L227.194 333.982L224.694 334.982L221.694 336.982L219.694 338.982L218 341.041L216.5 344.041Z"
-                  fill="black"
+                  fill="white"
                 />
                 <path
                   d="M87.5 344.041L238 269.541L245.5 279.541L255.5 293.041L104.5 366.541L87.5 344.041Z"
-                  fill="black"
+                  fill="white"
                 />
               </svg>
-              <span class="sidebar-item-label">Vedic Connect</span>
-            </a>
-
-            <div class="sidebar-menu">
-              {/* Dashboard */}
-              <a class="sidebar-item active-item" id="1" href="/instructor/dashboard">
+            </div>
+            <p>
+              A user-friendly e-learning platform where instructors share course
+              materials, and students access organized resources. Integrated
+              with Zoom, it supports live sessions and event scheduling for
+              exams, guest lectures, and more, ensuring a streamlined learning
+              experience.
+            </p>
+            <h2>Choose your role:</h2>
+          </div>
+          <div className="bottom">
+            {/* Learner */}
+            <div className="button-container">
+              <button
+                onClick={() => router.push("/student")}
+                class="download-btn"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -54,35 +70,21 @@ const Section = ({ title, children, childId }) => {
                     fill: "rgba(0, 0, 0, 1)",
                     transform: "",
                     msFilter: "",
-                  }}
-                >
-                  <path d="M4 13h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1zm-1 7a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v4zm10 0a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-7a1 1 0 0 0-1-1h-6a1 1 0 0 0-1 1v7zm1-10h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1h-6a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1z"></path>
-                </svg>
-
-                <span class="sidebar-item-label">Dashboard</span>
-              </a>
-
-              {/* All Courses */}
-              <a class="sidebar-item" id="2" href="#">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  style={{
-                    fill: "rgba(0, 0, 0, 1)",
-                    transform: "",
-                    msFilter: "",
+                    scale: "1.5",
                   }}
                 >
                   <path d="M2 7v1l11 4 9-4V7L11 4z"></path>
                   <path d="M4 11v4.267c0 1.621 4.001 3.893 9 3.734 4-.126 6.586-1.972 7-3.467.024-.089.037-.178.037-.268V11L13 14l-5-1.667v3.213l-1-.364V12l-3-1z"></path>
                 </svg>
-                <span class="sidebar-item-label">All Courses</span>
-              </a>
-
-              {/* Settings */}
-              <a class="sidebar-item" id="3" href="#">
+              </button>
+              <h3>Learner</h3>
+            </div>
+            {/* Instructor */}
+            <div className="button-container">
+              <button
+                onClick={() => router.push("/instructor")}
+                class="download-btn"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -92,41 +94,43 @@ const Section = ({ title, children, childId }) => {
                     fill: "rgba(0, 0, 0, 1)",
                     transform: "",
                     msFilter: "",
+                    scale: "1.5",
+                  }}
+                >
+                  <path d="M8.707 19.707 18 10.414 13.586 6l-9.293 9.293a1.003 1.003 0 0 0-.263.464L3 21l5.242-1.03c.176-.044.337-.135.465-.263zM21 7.414a2 2 0 0 0 0-2.828L19.414 3a2 2 0 0 0-2.828 0L15 4.586 19.414 9 21 7.414z"></path>
+                </svg>
+              </button>
+              <h3>Instructor</h3>
+            </div>
+            {/* Administrator */}
+            <div className="button-container">
+              <button
+                onClick={() => router.push("/admin")}
+                class="download-btn"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  style={{
+                    fill: "rgba(0, 0, 0, 1)",
+                    transform: "",
+                    msFilter: "",
+                    scale: "1.5",
                   }}
                 >
                   <path d="M12 16c2.206 0 4-1.794 4-4s-1.794-4-4-4-4 1.794-4 4 1.794 4 4 4zm0-6c1.084 0 2 .916 2 2s-.916 2-2 2-2-.916-2-2 .916-2 2-2z"></path>
                   <path d="m2.845 16.136 1 1.73c.531.917 1.809 1.261 2.73.73l.529-.306A8.1 8.1 0 0 0 9 19.402V20c0 1.103.897 2 2 2h2c1.103 0 2-.897 2-2v-.598a8.132 8.132 0 0 0 1.896-1.111l.529.306c.923.53 2.198.188 2.731-.731l.999-1.729a2.001 2.001 0 0 0-.731-2.732l-.505-.292a7.718 7.718 0 0 0 0-2.224l.505-.292a2.002 2.002 0 0 0 .731-2.732l-.999-1.729c-.531-.92-1.808-1.265-2.731-.732l-.529.306A8.1 8.1 0 0 0 15 4.598V4c0-1.103-.897-2-2-2h-2c-1.103 0-2 .897-2 2v.598a8.132 8.132 0 0 0-1.896 1.111l-.529-.306c-.924-.531-2.2-.187-2.731.732l-.999 1.729a2.001 2.001 0 0 0 .731 2.732l.505.292a7.683 7.683 0 0 0 0 2.223l-.505.292a2.003 2.003 0 0 0-.731 2.733zm3.326-2.758A5.703 5.703 0 0 1 6 12c0-.462.058-.926.17-1.378a.999.999 0 0 0-.47-1.108l-1.123-.65.998-1.729 1.145.662a.997.997 0 0 0 1.188-.142 6.071 6.071 0 0 1 2.384-1.399A1 1 0 0 0 11 5.3V4h2v1.3a1 1 0 0 0 .708.956 6.083 6.083 0 0 1 2.384 1.399.999.999 0 0 0 1.188.142l1.144-.661 1 1.729-1.124.649a1 1 0 0 0-.47 1.108c.112.452.17.916.17 1.378 0 .461-.058.925-.171 1.378a1 1 0 0 0 .471 1.108l1.123.649-.998 1.729-1.145-.661a.996.996 0 0 0-1.188.142 6.071 6.071 0 0 1-2.384 1.399A1 1 0 0 0 13 18.7l.002 1.3H11v-1.3a1 1 0 0 0-.708-.956 6.083 6.083 0 0 1-2.384-1.399.992.992 0 0 0-1.188-.141l-1.144.662-1-1.729 1.124-.651a1 1 0 0 0 .471-1.108z"></path>
                 </svg>
-                <span class="sidebar-item-label">Settings</span>
-              </a>
+              </button>
+              <h3>Admin</h3>
             </div>
-
-            {/* Account */}
-            <a class="sidebar-item account" id="4" href="#">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                style={{
-                  fill: "rgba(0, 0, 0, 1)",
-                  transform: "",
-                  msFilter: "",
-                }}
-              >
-                <path d="M12 2a5 5 0 1 0 5 5 5 5 0 0 0-5-5zm0 8a3 3 0 1 1 3-3 3 3 0 0 1-3 3zm9 11v-1a7 7 0 0 0-7-7h-4a7 7 0 0 0-7 7v1h2v-1a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v1z"></path>
-              </svg>
-              <span class="sidebar-item-label">Account</span>
-            </a>
           </div>
         </div>
-        <div className="right-container">
-          <h1>{title}</h1>
-          <div className="children-content">{children}</div>
-        </div>
       </div>
-    </section>
+    </>
   );
 };
 
-export default Section;
+export default page;
