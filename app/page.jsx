@@ -1,12 +1,26 @@
 // app/page.js (Home page)
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./globalsass.scss";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const page = () => {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const msg = searchParams?.get("msg") || "";
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (msg === "Login Successful") {
+      router.push("/instructor/dashboard");
+    }
+  }, [msg, router]);
+
+  const handleLogin = () => {
+    setLoading(true);
+    window.location.href = "/api/google";
+  };
 
   return (
     <>
@@ -16,7 +30,7 @@ const page = () => {
             <div className="heading">
               <h1>Welcome to VedicConnect</h1>
               <svg
-              className="logo"
+                className="logo"
                 width="343"
                 height="381"
                 viewBox="0 0 343 381"
@@ -81,10 +95,7 @@ const page = () => {
             </div>
             {/* Instructor */}
             <div className="button-container">
-              <button
-                onClick={() => router.push("/instructor")}
-                class="download-btn"
-              >
+              <button onClick={handleLogin} class="download-btn">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
