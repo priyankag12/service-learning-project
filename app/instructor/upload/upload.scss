@@ -1,0 +1,19 @@
+* {
+  font-family: sans-serif;
+}
+
+.upload-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 25rem;
+  width: 80%;
+  border-radius: 1rem;
+  //   width: min(800px, 80%);
+  background-color: white;
+  padding: 0 2rem;
+  background-image: url(../../../assets/krishnaBackground2.jpeg);
+  background-size: cover;
+  background-position: top right;
+}

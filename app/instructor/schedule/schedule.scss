@@ -1,0 +1,249 @@
+* {
+  font-family: sans-serif;
+}
+
+.schedule-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: auto;
+  width: 80%;
+  border-radius: 1rem;
+  //   width: min(800px, 80%);
+  background-color: white;
+  padding: 2rem 2rem;
+  background-image: url(../../../assets/krishnaBackground2.jpeg);
+  background-size: cover;
+  background-position: top right;
+
+  .temporary {
+    display: none;
+  }
+
+  .permaForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    // background-color: aliceblue;
+    margin: 0;
+
+    .form-container {
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 20px;
+      background-color: rgba(255, 255, 255, 0.25);
+      box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
+      padding: 2rem 2rem;
+      backdrop-filter: blur(10px);
+      height: auto;
+      width: 30rem;
+
+      .form-header {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-bottom: 1rem;
+
+        h1 {
+          margin: 0;
+
+          svg {
+            margin: 0;
+            margin-right: 0.5rem;
+          }
+        }
+
+        p {
+          margin: 0;
+          margin-top: 1rem;
+        }
+      }
+
+      .form-body {
+        height: 100%;
+        width: 100%;
+        // background-color: aliceblue;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 1rem 0;
+        align-items: center;
+
+        .full-box {
+          width: 100%;
+          height: 2rem;
+          background-color: #edededc2;
+          // color: #fff;
+          outline: 0;
+          border: 1px solid rgba(105, 105, 105, 0.397);
+          border-radius: 10px;
+          padding: 0.5rem 1rem;
+        }
+
+        .half-box {
+          padding: 0.5rem 1rem;
+          width: 41%;
+          height: 2rem;
+          background-color: #edededc2;
+          // color: #fff;
+          outline: 0;
+          border: 1px solid rgba(105, 105, 105, 0.397);
+          border-radius: 10px;
+        }
+
+        .time {
+          color: rgba(0, 0, 0, 0);
+        }
+
+        .input-wrapper {
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          .inside-time {
+            display: flex;
+            justify-content: flex-end;
+            background-color: transparent;
+            border: none;
+            color: transparent;
+            position: absolute;
+            right: 8%;
+            width: 2rem;
+            font-size: 1.5rem;
+          }
+        }
+
+        .custom-placeholder {
+          position: absolute;
+          top: 35%;
+          left: 7.5%;
+          font-size: 0.8rem;
+          color: rgba(0, 0, 0, 0.507);
+          pointer-events: none; /* Ignore clicks */
+
+          &.filled {
+            color: black;
+          }
+        }
+
+        .attendees {
+          // background-color: pink;
+          width: 100%;
+          overflow: hidden;
+          display: flex;
+          flex-direction: column;
+          position: relative;
+          gap: 1rem;
+          display: flex;
+
+          .inside-attendees {
+            display: flex;
+            align-items: center;
+          }
+
+          .remove-button {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 0.5rem;
+            border: 0px solid transparent;
+            background-color: rgba(237, 77, 77, 0.288);
+            border-radius: 1.25em;
+            transition: all 0.2s linear;
+
+            &:hover {
+              box-shadow: 3.4px 2.5px 4.9px rgba(0, 0, 0, 0.025),
+                8.6px 6.3px 12.4px rgba(0, 0, 0, 0.035),
+                17.5px 12.8px 25.3px rgba(0, 0, 0, 0.045),
+                36.1px 26.3px 52.2px rgba(0, 0, 0, 0.055),
+                99px 72px 143px rgba(0, 0, 0, 0.08);
+              cursor: pointer;
+            }
+          }
+
+          .tooltip {
+            position: relative;
+            display: inline-block;
+            margin: 0;
+          }
+
+          .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 4em;
+            background-color: rgba(0, 0, 0, 0.253);
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 5px;
+            position: absolute;
+            z-index: 1;
+            top: 25%;
+            left: 110%;
+          }
+
+          .tooltip .tooltiptext::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: 100%;
+            margin-top: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: transparent rgba(0, 0, 0, 0.253) transparent
+              transparent;
+          }
+
+          .tooltip:hover .tooltiptext {
+            visibility: visible;
+          }
+
+          .attendees-input {
+            width: 41%;
+            height: 2rem;
+            padding: 0.5rem 1rem;
+            outline: 0;
+            border: 1px solid rgba(105, 105, 105, 0.397);
+            background-color: #edededc2;
+            border-radius: 10px;
+            margin-right: 1rem;
+          }
+        }
+        .add-button {
+          width: 5rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: absolute;
+          right: 20%;
+          border: none;
+          outline: none;
+          background-color: rgb(38, 107, 255);
+          padding: 0.5rem 1rem;
+          font-size: 12px;
+          font-weight: 700;
+          color: #fff;
+          border-radius: 1rem;
+          transition: all ease 0.1s;
+          box-shadow: 0px 5px 0px 0px rgb(65, 121, 243);
+
+          &:hover {
+            cursor: pointer;
+          }
+
+          &:active {
+            transform: translateY(5px);
+            box-shadow: 0px 0px 0px 0px rgb(65, 121, 243);
+          }
+        }
+
+        .submit-button {
+          right: 0 !important;
+        }
+      }
+    }
+  }
+}

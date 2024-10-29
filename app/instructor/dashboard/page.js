@@ -11,7 +11,7 @@ export default function InstructorDashboard() {
   const router = useRouter();
 
   return (
-    <Section title="Welcome, Instructor!">
+    <Section title="Welcome, Instructor!" childId={1}>
       <div className="dashboard-container">
         <div className="dashboard-content">
           <div className="title-container">

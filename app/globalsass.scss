@@ -1,0 +1,83 @@
+.body-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 98vh;
+  background: url("../assets/krishnaFluteBackground.jpg");
+  background-size: cover;
+  background-position: center;
+  font-family: sans-serif;
+  color: white;
+
+  .card-container {
+    height: 25rem;
+    width: 35rem;
+    position: relative;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(7.3px);
+    -webkit-backdrop-filter: blur(7.3px);
+    border: 1px solid rgba(255, 255, 255, 0.24);
+
+    .top {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding-left: 2rem;
+      padding-right: 2rem;
+
+      .heading {
+        margin-right: 2rem;
+        display: flex;
+
+        .logo {
+          height: 3rem;
+          width: 3rem;
+          position: absolute;
+          right: 1.5rem;
+          top: 1rem;
+        }
+      }
+    }
+
+    .bottom {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 4rem;
+
+      .button-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .download-btn {
+        border: 2px solid rgb(38, 107, 255);
+        background-color: white;
+        width: 5rem;
+        height: 5rem;
+        border-radius: 10px;
+        position: relative;
+        z-index: 1;
+        transition: all 0.2s ease;
+        cursor: pointer;
+      }
+      .download-btn svg {
+        width: 25px;
+        height: 25px;
+        transition: all 0.3s ease;
+      }
+      .download-btn:hover svg {
+        fill: white;
+      }
+      .download-btn:hover {
+        background-color: rgb(38, 107, 255);
+      }
+    }
+  }
+}
