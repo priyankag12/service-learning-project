@@ -4,7 +4,6 @@
 import { useRouter } from "next/navigation";
 import { Upload, Calendar } from "lucide-react";
 import Section from "@/components/baseLayout/baseLayout.jsx"; // Import Section component
-// import "./dashboardStyles.css"; // Add this line to import custom styles
 import "./dashboard.scss";
 
 export default function InstructorDashboard() {
@@ -20,10 +19,10 @@ export default function InstructorDashboard() {
           <div className="button-container">
             <div className="button-div">
               <button
-                class="button"
+                className="button"
                 onClick={() => router.push("/instructor/upload")}
               >
-                <span class="button-content">
+                <span className="button-content">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -44,10 +43,10 @@ export default function InstructorDashboard() {
             </div>
             <div className="button-div">
               <button
-                class="button"
+                className="button"
                 onClick={() => router.push("/instructor/schedule")}
               >
-                <span class="button-content">
+                <span className="button-content">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -69,13 +68,13 @@ export default function InstructorDashboard() {
           </div>
         </div>
       </div>
+      {/* New button to create a course */}
+      <button
+        className="create-course-button"
+        onClick={() => router.push("/instructor/createcourse")}
+      >
+        Create a New Course
+      </button>
     </Section>
   );
-}
-
-{
-  /*onClick={() => router.push("/instructor/schedule")}*/
-}
-{
-  /*onClick={() => router.push("/instructor/upload")}*/
 }
