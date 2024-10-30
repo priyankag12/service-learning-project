@@ -5,12 +5,20 @@ import { useRouter } from "next/navigation";
 import { Upload, Calendar } from "lucide-react";
 import Section from "@/components/baseLayout/baseLayout.jsx"; // Import Section component
 import "./dashboard.scss";
+import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/nextjs';
 
 export default function InstructorDashboard() {
   const router = useRouter();
 
   return (
     <Section title="Welcome, Instructor!" childId={1}>
+
+      <div className="auth-button">
+            <SignedIn>
+              <UserButton showName />
+            </SignedIn>
+      </div>
+
       <div className="dashboard-container">
         <div className="dashboard-content">
           <div className="title-container">
@@ -19,10 +27,10 @@ export default function InstructorDashboard() {
           <div className="button-container">
             <div className="button-div">
               <button
-                className="button"
+                class="button"
                 onClick={() => router.push("/instructor/upload")}
               >
-                <span className="button-content">
+                <span class="button-content">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -43,10 +51,10 @@ export default function InstructorDashboard() {
             </div>
             <div className="button-div">
               <button
-                className="button"
+                class="button"
                 onClick={() => router.push("/instructor/schedule")}
               >
-                <span className="button-content">
+                <span class="button-content">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"

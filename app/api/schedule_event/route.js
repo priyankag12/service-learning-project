@@ -1,6 +1,5 @@
 import { google } from 'googleapis';
 import { v4 as uuid } from 'uuid';
-import { cookies } from 'next/headers';
 
 export async function GET() {
   return new Response(JSON.stringify({ msg: 'Please use POST to schedule an event' }), { status: 405 });
@@ -8,28 +7,15 @@ export async function GET() {
 
 export async function POST(req) {
   try {
-    const cookieStore = cookies();
-
-    // Get the value of the token passed in the redirect route by using its name "google_tokens"
-    const tokenCookie = cookieStore.get('google_tokens');
-    const userEmail = cookieStore.get('user_email')
-    
-    if (!tokenCookie || !userEmail) {
-      return new Response(JSON.stringify({ msg: 'User is not authenticated' }), { status: 401 });
-    }
-
-    // Parse the tokens from the cookie
-    const tokens = JSON.parse(tokenCookie.value);
-
-    const oauth2Client = new google.auth.OAuth2(
-      process.env.CLIENT_ID,
-      process.env.CLIENT_SECRET,
-      process.env.REDIRECT_URL
-    );
-
-    oauth2Client.setCredentials(tokens);
-
-    const calendar = google.calendar({ version: 'v3', auth: oauth2Client });
+    // Set up Google Calendar API client with service account credentials
+    const calendar = google.calendar({
+      version: 'v3',
+      auth: new google.auth.JWT({
+        email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
+        key: process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY.replace(/\\n/g, '\n'),
+        scopes: ['https://www.googleapis.com/auth/calendar'],
+      })
+    });
 
     const body = await req.json();
 
@@ -41,14 +27,14 @@ export async function POST(req) {
       );
     }
 
-    // Format dates properly for Google Calendar API
+    // Format dates for Google Calendar API
     const startDateTime = new Date(body.start.dateTime).toISOString();
     const endDateTime = new Date(body.end.dateTime).toISOString();
 
-    // Validate attendees format
+    // Format and validate attendees
     const attendees = body.attendees?.filter(attendee => attendee.email?.trim()) || [];
 
-    // Construct the event object
+    // Construct event object
     const eventData = {
       summary: body.summary,
       description: body.description || '',
@@ -63,7 +49,6 @@ export async function POST(req) {
       conferenceData: {
         createRequest: {
           requestId: uuid(),
-          conferenceSolutionKey: { type: 'hangoutsMeet' },
         },
       },
       attendees: attendees,
@@ -87,7 +72,6 @@ export async function POST(req) {
   } catch (error) {
     console.error('Detailed error:', error);
     
-    // Return more specific error messages
     const errorMessage = error.message || 'Failed to create event';
     const errorStatus = error.code || 500;
     

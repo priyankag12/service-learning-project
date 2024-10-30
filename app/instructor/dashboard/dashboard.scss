@@ -18,6 +18,24 @@
   background-position: top right;
 }
 
+.auth-buttons {
+  display: flex;
+}
+
+.sign-in-button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: white;
+  background-color: #0070f3;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.sign-in-button:hover {
+  background-color: #005bb5;
+}
+
 // Content wrapper
 .dashboard-content {
   width: 60%;

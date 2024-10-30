@@ -1,26 +1,13 @@
 // app/page.js (Home page)
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./globalsass.scss";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 
-const page = () => {
+const Page = () => {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const msg = searchParams?.get("msg") || "";
-  const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    if (msg === "Login Successful") {
-      router.push("/instructor/dashboard");
-    }
-  }, [msg, router]);
-
-  const handleLogin = () => {
-    setLoading(true);
-    window.location.href = "/api/google";
-  };
 
   return (
     <>
@@ -95,7 +82,7 @@ const page = () => {
             </div>
             {/* Instructor */}
             <div className="button-container">
-              <button onClick={handleLogin} class="download-btn">
+              <button onClick={() => router.push("/sign-in")} class="download-btn">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -144,4 +131,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
