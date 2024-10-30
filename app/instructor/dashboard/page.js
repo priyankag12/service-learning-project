@@ -5,20 +5,13 @@ import { useRouter } from "next/navigation";
 import { Upload, Calendar } from "lucide-react";
 import Section from "@/components/baseLayout/baseLayout.jsx"; // Import Section component
 import "./dashboard.scss";
-import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/nextjs';
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 
 export default function InstructorDashboard() {
   const router = useRouter();
 
   return (
     <Section title="Welcome, Instructor!" childId={1}>
-
-      <div className="auth-button">
-            <SignedIn>
-              <UserButton showName />
-            </SignedIn>
-      </div>
-
       <div className="dashboard-container">
         <div className="dashboard-content">
           <div className="title-container">
@@ -73,16 +66,32 @@ export default function InstructorDashboard() {
               </button>
               <h3>Schedule</h3>
             </div>
+            <div className="button-div">
+              <button
+                class="button"
+                onClick={() => router.push("/instructor/createcourse")}
+              >
+                <span class="button-content">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    style={{
+                      fill: "rgba(255, 255, 255, 1)",
+                      transform: "",
+                      msFilter: "",
+                    }}
+                  >
+                    <path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path>
+                  </svg>
+                </span>
+              </button>
+              <h3>New Course</h3>
+            </div>
           </div>
         </div>
       </div>
-      {/* New button to create a course */}
-      <button
-        className="create-course-button"
-        onClick={() => router.push("/instructor/createcourse")}
-      >
-        Create a New Course
-      </button>
     </Section>
   );
 }

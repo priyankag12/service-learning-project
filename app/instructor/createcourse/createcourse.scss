@@ -1,41 +1,61 @@
+.container-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: auto;
+  width: 80%;
+  border-radius: 1rem;
+  //   width: min(800px, 80%);
+  background-color: white;
+  padding: 2rem 0;
+  background-image: url(../../../assets/krishnaBackground2.jpeg);
+  background-size: cover;
+  background-position: top right;
+  font-family: sans-serif;
+}
+
 .create-course-container {
-    padding: 2rem;
-    max-width: 600px;
-    margin: auto;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .create-course-form .form-group {
-    margin-bottom: 1rem;
-  }
-  
-  .create-course-form label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-  }
-  
-  .create-course-form input,
-  .create-course-form textarea {
-    width: 100%;
-    padding: 0.5rem;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-  }
-  
-  .submit-button {
-    display: inline-block;
-    background-color: #4caf50;
-    color: #fff;
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .submit-button:hover {
-    background-color: #45a049;
-  }
-  
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
+  padding: 2rem 2rem;
+  backdrop-filter: blur(10px);
+  // max-width: 600px;
+  width: 50%;
+  margin: auto;
+}
+
+.create-course-form .form-group {
+  margin-bottom: 1rem;
+}
+
+.create-course-form label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.create-course-form input,
+.create-course-form textarea {
+  background-color: #edededc2;
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.submit-button {
+  display: inline-block;
+  background-color: #4caf50;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: #45a049;
+}
